@@ -1,0 +1,120 @@
+when dealing with shell commands, space/time complexity doesn't really matter.
+common shell commands
+	ls - list files in directory
+	cp - copy
+	mv - move
+	mkdir - make directory
+	touch - make file
+
+commands I use everyday
+	ls
+	cd
+	git add , commit , push , pull origin
+	touch
+	mkdir
+
+write a simple shell script to list all processes:
+	ps -ef
+	list all processes and show what their doing
+	return process ID:
+		ps -ef | awk -F" " '{print $col_num}'
+			awk - filter by specific line/file/whatever
+			-F -> field seperator
+
+write a script to print only TRACEs from a remote log url:
+	url = https://raw.githubusercontent.com/iam-veeramalla/sandbox/8111d5d486731b78e49548de156a61a761ca568d/log/dummylog01122022.log
+	'retrieving logs from an s3 bucket'
+	Curl - retrieve information from a remote sever
+	|(pipe) - combines the two commands -> sends output of one command to the following command to be interpreted by compiler.
+	GREP - return section
+	syntax: curl someurl.com | grep OBJ (curl pipe and grep)
+	Traces:
+	curl url | grep TRACE
+
+write a shell script to print numbers divided by 3 & 5 and not 15:
+	examples:
+		print even numbers ->num%2==0?
+		print odd numbers -> num%2!=0?
+		print numbers divisible by 3 -> num%3==0?
+		print prime numbers
+	divisible by 3 3,6,9,12,15
+	divisible by 5 5,10,15
+	not divisible by 15
+	essentially print everything except 15.
+	commands:
+		vim samplescript.sh -> create file
+		chmod 777 file -> give read,write permissions
+		./file -> to run.
+write a script to print number of "s" in mississippi:
+	return the ocurrence of S.
+	commands: grep -o "s" <<<"%x" | wc -l
+		grep -> return section
+		-o -> only filer
+		<<<"$x" -> 
+		| -> send to following command
+		wc -l -> list word count to count string in input 
+debug shell script
+	set -x
+	adding the above will tell the script to run in debug mode.
+
+what is crontab in Linux? Can you provide an example of usage?
+	linux admin submit logs at the end of the day.
+	contrab -> linux admin, alarm to automatically run a scrip at a unix time. 
+
+	report -> node health (how well is node working)
+
+how to open a read-only file?
+	vim -r test.txt	
+
+difference between soft and hard link?
+	in linux there are two links ; soft and hard
+	create a file then save a file (memory or disk)
+	re-use a file multiple times
+		hard links can be used to copy files multiple times
+		mirror original file.
+	soft link: python3 example
+		./python -> linux sends script file to python3 in system
+		soft links are like aliases.
+
+difference between break and continue
+	continue, skip this iteration and move on to the next (skip this and go to next).
+	break, breaking the execution. stopping the loop.
+	example: 1000 students csv file
+		when you find john then stop the execution
+		when i == 'john' 
+			break
+
+disadvantages of shell scripting
+	errors are frequent and costly
+	execution is slow
+	crazy bugs
+	large complex tasks are not suited
+	minimal data structures
+	everytime a new shell command is executed, a new process is launched.
+
+loops and use cases
+	for loop
+		loop through something
+	(do) while loop
+		keep running until condition is/isn't met
+
+bash dynamic or static typed?
+	dynamic
+		x=5 -> compiler knows this is an int
+		x='x' -> compiler knows this is a string
+
+trouble shooting tools
+	traceroute -> for network debugging
+		you want to see why your network is slow.
+		commands: 
+			traceroute url
+			tracepath -> does the same without rule priviledges. 
+
+how will you manage logs of a system that generate huge log files everyday?
+	how to preverse logs efficiently
+		logrotate
+			manage logs efficiently
+			for how many days?
+				lograte(gzip,zip)
+					after 30 days delete.
+	
